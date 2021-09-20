@@ -1,0 +1,13 @@
+{
+    "name": "victor/click-e-cote",
+    "description": "Gerenciador de dependencias",
+    "authors": [
+        {
+            "name": "Victor Belo",
+            "email": "victorbelo1997@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.4"
+    }
+}
