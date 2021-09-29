@@ -9,7 +9,7 @@
 
  ?>
 
-  <form method="post" class="mt-4 ml-4" action="acao-form-prato.php">
+  <form method="post" class="mt-4 ml-4" action="acao-adicionar-prato.php">
    	<h5>Detalhes do pedido:</h4>
    	<div class="form-group mt-3">
       <h4><?=$prato->nome?></h4>

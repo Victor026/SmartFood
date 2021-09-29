@@ -253,3 +253,45 @@ footer {
   color: white;
   padding: 1em 2em;
 }
+
+.pedido-aberto {
+  width: 100%;
+  background-color: #E72E2E;
+  padding: 0.7em;
+  text-align: center;
+}
+
+.texto-pedido-aberto {
+  color: white;
+  text-decoration: none;
+}
+
+.texto-pedido-aberto:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.prato-adicionado {
+  width: 100%;
+  background-color: #21B547;
+  padding: 0.7em;
+  text-align: center;
+  color: white;
+}
+
+.esconder {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+
+/** FINALIZAÇÃO DO PEDIDO **/
+.prato-finalizacao {
+  margin-top: 0.5em;
+  background-color: #dbdbdb;
+  padding: 2em;
+}
+
+.prato-finalizacao p {
+  margin-top: 1em;
+}

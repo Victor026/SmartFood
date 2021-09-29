@@ -3,6 +3,7 @@ include 'topo.php';
 include 'entidades/Usuario.php';
 $alertaLogin = '';
 
+  //Lógica para as mensagens dos redirecionamentos
  if ($_GET) {
    if ($_GET['redirect'] == 1) {
      $alertaLogin='<div class="alert alert-success mt-2"> Usuário cadastrado com sucesso! </div>';

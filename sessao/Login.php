@@ -6,11 +6,10 @@
 class Login {
 
   /**
-   * Descrição do método
-   * @param [tipo] $values
-   * @return [tipo]
+   * Pega o usuário logado
+   * @return $_SESSION
    */
-   public function get_usuario_logado() {
+   public static function get_usuario_logado() {
      self::init();
      return self::isLogged() ? $_SESSION['usuario'] : null;
    }
@@ -35,7 +34,8 @@ class Login {
         'id' => $usuario->id,
         'nome' => $usuario->nome,
         'telefone' => $usuario->telefone,
-        'cpf' => $usuario->cpf
+        'cpf' => $usuario->cpf,
+        'pedido' => array(),
       ];
       // Redireciona pra página inicial
         header('location:pag-inicial-adm.php');

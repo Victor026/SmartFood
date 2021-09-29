@@ -2,11 +2,26 @@
 require('vendor/autoload.php');
 include 'sessao/Login.php';
 include $_SERVER['DOCUMENT_ROOT'].'/Smartfood/Database/database.php';
+
+// Alerta que aparece quando há um pedido não finalizado
+$finalizar_pedido = '';
 $usuario = Login::get_usuario_logado();
 date_default_timezone_set('America/Sao_Paulo');
 $enviaContato = '';
 $home_a = '';
 $dados_a = '';
+
+// Verifica se há algum pedido não finalizado e exibe "Finalizar pedido"
+if (Login::isLogged()) {
+  if ($_SESSION['usuario']['pedido'] and $_SERVER['REQUEST_URI'] != '/Smartfood/finalizar-pedido.php') {
+    $finalizar_pedido = ' <a href="finalizar-pedido.php" class="texto-pedido-aberto">
+    <div class="pedido-aberto">
+      <p style="margin-bottom: 0 !important;">Finalizar pedido</p>
+    </div>
+   </a>';
+  }
+}
+
 if (!isset($page)) {
   $page = '';
 }
@@ -56,5 +71,6 @@ if ($page == 'home') {
 
       </div>
     </div>
-
   </nav>
+
+  <?=$finalizar_pedido?>
