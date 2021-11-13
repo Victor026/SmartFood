@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Retira o .php das páginas
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC]
+
+# Reescreve a URL da página dos restaurantes
+RewriteRule ^restaurante/([0-9]+) restaurante.php?restaurante=$1 [NC]

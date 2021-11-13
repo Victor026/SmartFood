@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
@@ -207,7 +207,8 @@ footer {
   width: 100%;
   background-color: #E5E5E5;
   padding: 2em 2em;
-  margin-top: 0.6em;
+  margin-top: 1.5em;
+  border-radius: 0.5em;
 }
 
 .h3-restaurante {
@@ -231,13 +232,16 @@ footer {
 /** VISUALIZAÇÃO RESTAURANTE ESPECÍFICO **/
 .img-topo-restaurante {
   width: 100%;
+  height: 20em;
+  object-fit: cover
 }
 
 /** PRATO **/
 .prato {
   padding: 2em;
   background-color: #CEEDFC;
-  margin-top: 1em;
+  margin-top: 1.5em;
+  border-radius: 0.5em;
 }
 
 .img-prato {
@@ -287,9 +291,15 @@ footer {
 
 /** FINALIZAÇÃO DO PEDIDO **/
 .prato-finalizacao {
-  margin-top: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   background-color: #dbdbdb;
   padding: 2em;
+  border-radius: 0.5em;
+}
+
+.prato-finalizacao img {
+  max-width: 15em;
 }
 
 .prato-finalizacao p {
@@ -305,9 +315,8 @@ footer {
 /** BOX PEDIDO NOS PEDIDOS DO RESTAURANTE **/
 .box-pedidos {
   padding: 1em 2em;
-  display: inline-block;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   border-radius: 0.5em;
 }
 
@@ -319,6 +328,10 @@ footer {
   background-color: #f0db7f;
 }
 
+.fundo-pedido-esperando {
+  background-color: #375a94;
+}
+
 .fundo-pedido-fechado {
   background-color: #f07f7f;
 }
@@ -328,18 +341,60 @@ footer {
 }
 
 /** CHAT **/
-.chat {
-  width: 20em;
+
+
+#conversa {
+  width: 80%;
+  max-width: 30em;
   height: 20em;
-  background-color: white;
-  padding: 0em 1em;
-  display: flex;
+  padding: 0 1em;
   align-items: flex-end;
+  display: inline-block;
+  overflow-y: scroll;
 }
 
 .box-mensagem {
-  width: 20em;
+  width: 80%;
+  max-width: 30em;
   height: 4em;
   background-color: white;
   border: none;
+}
+
+.div-mensagem-direita {
+  width: 100%;
+  display: inline-block;
+  text-align: right;
+}
+
+.div-mensagem-direita p{
+  padding: 0.5em;
+  background-color: #1834d6;
+  display: inline-block;
+  border-radius: 0.5em;
+}
+
+.div-mensagem-esquerda {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+}
+
+.div-mensagem-esquerda p{
+  padding: 0.5em;
+  background-color: #598057;
+  display: inline-block;
+  border-radius: 0.5em;
+}
+
+.div-mensagem p {
+  display: inline-block;
+}
+
+.novas-mensagens {
+  background-color: #5bc0de;
+  padding: 1em;
+  text-align: center;
+  color: white;
+  line-height: 2em;
 }

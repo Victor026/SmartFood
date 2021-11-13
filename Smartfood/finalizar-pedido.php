@@ -32,7 +32,6 @@
         $preco_total += $prato_atual->preco * $value;
         $quantidade = $value;
 
-
       }
 
       // Pega a observação do prato no pedido
@@ -60,8 +59,10 @@
 
  ?>
 
- <?=$saida_pratos?>
+
  <div class="container mt-3">
+   <?=$saida_pratos?>
+   <br>
    <p>Preço total a pagar: <?=$preco_total_f?></p>
  </div>
 

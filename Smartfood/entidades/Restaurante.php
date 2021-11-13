@@ -49,29 +49,41 @@ class Restaurante extends Usuario{
      */
      public $numero;
 
+    /**
+     * Avaliação do restaurante
+     * @var date
+     */
+     public $avaliacao;
+
+     /**
+      * Descrição do restaurante
+      * @var string
+      */
+      public $descricao;
+
       /**
-       * Avaliação do restaurante
-       * @var date
+       * Email do restaurante
+       * @var string
        */
-       public $avaliacao;
+       public $email;
+
+      /**
+       * Telefone do restaurante
+       * @var string
+       */
+       public $telefone;
 
        /**
-        * Descrição do restaurante
-        * @var string
+        * nota do restaurante
+        * @var float
         */
-        public $descricao;
+        public $nota;
 
         /**
-         * Email do restaurante
-         * @var string
+         * Quantidade de notas do restaurante
+         * @var int
          */
-         public $email;
-
-        /**
-         * Telefone do restaurante
-         * @var string
-         */
-         public $telefone;
+         public $pedidos_nota;
 
       /**
        * Método responsável por cadastrar o restaurante
@@ -90,6 +102,8 @@ class Restaurante extends Usuario{
                                  'numero' => $this->numero,
                                  'avaliacao' => $this->avaliacao,
                                  'telefone' => $this->telefone,
+                                 'nota' => $this->nota,
+                                 'pedidos_nota' => $this->pedidos_nota,
                                ]);
 
        }
@@ -146,7 +160,7 @@ class Restaurante extends Usuario{
           return (new Database('restaurantes'))->update( 'id = '.$this->id,
                                                     [
                                                       'nome' => $this->nome,
-                                                      'nome' => $this->email,
+                                                      'email' => $this->email,
                                                       'cnpj' => $this->cnpj,
                                                       'descricao' => $this->descricao,
                                                       'estado' => $this->estado,
@@ -155,6 +169,8 @@ class Restaurante extends Usuario{
                                                       'numero' => $this->numero,
                                                       'avaliacao' => $this->avaliacao,
                                                       'telefone' => $this->telefone,
+                                                      'nota' => $this->nota,
+                                                      'pedidos_nota' => $this->pedidos_nota,
                                                   ]);
           }
 

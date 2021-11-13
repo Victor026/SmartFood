@@ -35,9 +35,9 @@
   } elseif ($pedido->id_situacao == 2) {
     $situacao = 'Preparando';
   } elseif ($pedido->id_situacao == 3) {
+    $situacao = 'Esperando retirada';
+  } elseif ($pedido->id_situacao == 4) {
     $situacao = 'Finalizado';
-      $dar_nota = "<a href='dar_nota.php' class='btn btn-primary'>Dar nota</a>";
-  }  elseif ($pedido->id_situacao == 4) {
     $situacao = 'Recusado';
   }
 
@@ -54,7 +54,7 @@
                         <p><b>Nome do prato:</b> '.$prato->nome.'</p>
                         <p><b>Quantidade:</b> '.$prato_pedido->qtd_prato.'</p>
                         <p><b>Observação:</b> '.$prato_pedido->observacao.'</p>
-                        '.$dar_nota.'
+
                       </div>
                       <br>';
   }
@@ -62,7 +62,7 @@
   $entrar_em_contato = '<a href="chat.php?id_destino='.$usuario_rest->id.'&pedido='.$pedido->id.'" class="btn btn-success">Entrar em contato com o restaurante</a>';
 
   if ($pedido->id_situacao == 1) {
-    $cancelar_pedido = '<a href="cancelar-pedido.php?pedido='.$pedido->id.'" class="btn btn-danger">Cancelar pedido</a>';
+    // $cancelar_pedido = '<a href="cancelar-pedido.php?pedido='.$pedido->id.'" class="btn btn-danger">Cancelar pedido</a>';
   }
 
 ?>
@@ -79,12 +79,12 @@
 
     </div>
     <?=$saida_pratos?>
-
+    <br>
     <?=$entrar_em_contato?>
     <?=$cancelar_pedido?>
     <br>
     <a href="pedidos.php" class="btn btn-primary mt-4">Voltar os pedidos</a>
-
+    <br><br>
   </div>
 
 <?php

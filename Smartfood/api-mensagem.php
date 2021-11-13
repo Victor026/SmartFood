@@ -2,7 +2,7 @@
   include 'database/Database.php';
   include 'entidades/Mensagem.php';
 
-  date_default_timezone_set('America/Sao_Paulo');
+  $date = date( 'Y-m-d H:i:s' );
 
   if ($_GET) {
     $mensagens = Mensagem::consultar( '( id_origem='.$_GET['id_origem'].' AND id_destino='.$_GET['id_destino'].' AND id_pedido = '.$_GET['id_pedido'].' )
@@ -18,7 +18,7 @@
     $mensagem->id_pedido = $_POST['pedido'];
     $mensagem->id_origem = $_POST['origem'];
     $mensagem->id_destino = $_POST['destino'];
-    $mensagem->data_mensagem = date( 'Y-m-d h:i:s' );
+    $mensagem->data_mensagem = $date;
     $mensagem->mensagem = $_POST['mensagem'];
     $mensagem->cadastrar();
   }

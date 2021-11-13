@@ -1,13 +1,15 @@
 <?php
   include 'topo.php';
+  include 'entidades/Usuario.php';
+  $usuario = Usuario::consultar_usuario_id($_GET['id_destino']);
   $url = 'api-mensagem.php?id_origem='.$_SESSION['usuario']['id'].'&id_destino='.$_GET['id_destino'].'&id_pedido='.$_GET['pedido'];
  ?>
 
  <div class="container mt-4">
    <p>Você está falando com:</p>
-   <h4>Restaurante Paulista</h4>
+   <h4><?=$usuario->nome?></h4>
    <div class="chat">
-     <p id="conversa" style="word-break: break-all;"></p>
+     <div id="conversa" style="word-break: break-all; color: white;"></div>
    </div>
 
    <textarea id="mensagem"  class="box-mensagem mt-3" rows="8" cols="80" placeholder="Insira uma mensagem..."></textarea>
@@ -57,15 +59,17 @@
          var output = '';
 
          for (var i = 0; i < mensagens.length; i++) {
+           time = mensagens[i].data_mensagem.substring(mensagens[i].data_mensagem.length - 8);
            if (mensagens[i].id_origem == <?php echo $_SESSION['usuario']['id'];?>) {
-             output += '<p style="float: left">'+mensagens[i].mensagem+'</p>';
+             output += '<div class="azul-chat div-mensagem-direita"><p>'+mensagens[i].mensagem+ '<br><small style="color: #c9c0bb;">'+time+'</small></p></div>';
            } else {
-             output += '<p style="float: right">'+mensagens[i].mensagem+'</p>';
+             output += '<div class="azul-chat div-mensagem-esquerda"><p class="texto-left verde-chat">'+mensagens[i].mensagem+'<br><small style="color: #c9c0bb;">'+time+'</small></p></div>';
            }
-
+           output += '<br>'
          }
 
          document.getElementById('conversa').innerHTML = output;
+         document.querySelector("#conversa").scrollTop = document.querySelector("#conversa").scrollHeight;
        }
      }
 
@@ -73,6 +77,10 @@
    }
 
  </script>
- <?php
-  include 'rodape.php';
-  ?>
+ <!-- JQuery -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <!-- Bootstrap JS -->
+ <script src="src/js/bootstrap.min.js"></script>
+
+</body>
+</html>

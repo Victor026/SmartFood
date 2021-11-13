@@ -101,6 +101,7 @@ public function select( $where = null, $order = null, $limit = null, $fields = '
   $limit = strlen($limit) ? 'LIMIT '.$limit : '';
   // Monta a query
   $query = 'SELECT '.$fields.' FROM '.$this->tabela.' '.$where.' '.$order.' '.$limit;
+  
   //Executa a query
   return $this->execute( $query );
 }

@@ -41,7 +41,7 @@ class Login {
 
       if ($usuario->acesso == 'u') {
         // Redireciona pra página inicial do cliente
-          header('location:pag-inicial-adm.php');
+          header('location:pag-inicial-adm');
       } else {
         // Redireciona pra página inicial do cliente
           header('location:pag-inicial-res.php');

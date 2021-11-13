@@ -11,7 +11,7 @@
   }
 
   // Muda o status do pedido para "Finalizado"
-  $pedido->id_situacao = 3;
+  $pedido->id_situacao = 4;
   $pedido->atualizar();
   header('location:restaurante-pedidos.php');
   exit;

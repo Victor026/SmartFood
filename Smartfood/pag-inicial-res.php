@@ -21,10 +21,9 @@
   $pedidos = Pedido::consultar( 'id_restaurante ='.$restaurante->id.' AND ( id_situacao = 1 )' );
   // Se houver pedidos abertos aparece aviso
   if ($pedidos) {
-    $pedidos_abertos = '<a href="restaurante-pedidos.php" class="btn btn-primary" style="width: 100%; border-radius: 0;">Visualizar pedidos abertos</a>';
   }
 
-  echo $pedidos_abertos;
+  echo '<a href="restaurante-pedidos.php" class="btn btn-primary" id="pedidos-abertos" style="width: 100%; border-radius: 0;">Visualizar pedidos</a>';
   echo '<img src="src/img/fotos_restaurantes/restaurante-'.$restaurante->id.'.jpg" alt="" class="img-topo-restaurante">';
 
   $pratos = Prato::consultar( 'id_restaurante = '.$restaurante->id );
@@ -49,5 +48,32 @@
   <a <?php echo 'href="registrar-prato.php?restaurante='.$restaurante->id.'"'; ?> class="btn btn-success mt-2 mb-2">Adicionar pratos</a>
 </div>
 
+<script type="text/javascript">
+
+  let pedidosAbertos = document.querySelector('#pedidos-abertos');
+
+  pegarPedidosAbertos();
+
+  let interval = setInterval(() => pegarPedidosAbertos(), 900);
+
+  function pegarPedidosAbertos() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'api-pedidos.php?restaurante=<?=$restaurante->id?>', true);
+    xhr.onload = function() {
+      if (this.status == 200) {
+        if (this.responseText != '[]') {
+            var pedidos = JSON.parse(this.responseText);
+        }
+        console.log(pedidos);
+      }
+      if (pedidos == null) {
+        pedidosAbertos.style.display = "none";
+      } else {
+        pedidosAbertos.style.display = "block";
+      }
+    };
+    xhr.send();
+  }
+</script>
 
 <?php include 'rodape.php'; ?>

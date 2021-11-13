@@ -10,8 +10,8 @@
     exit;
   }
 
-  // Muda o status do pedido para "Recusado"
-  $pedido->id_situacao = 5;
+  // Muda o status do pedido para "Esperando retirada"
+  $pedido->id_situacao = 3;
   $pedido->atualizar();
   header('location:restaurante-pedidos.php');
   exit;

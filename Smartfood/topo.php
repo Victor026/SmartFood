@@ -1,23 +1,26 @@
 <?php
 require('vendor/autoload.php');
 include 'sessao/Login.php';
+include_once 'entidades/Mensagem.php';
 include $_SERVER['DOCUMENT_ROOT'].'/Smartfood/Database/database.php';
 
 // Altera a tela inicial para usuários e restaurantes
 if (Login::isLogged()) {
   if ($_SESSION['usuario']['acesso'] == 'u') {
     $home_login = 'pag-inicial-adm.php';
+    $meus_pedidos = 'pedidos.php';
   } else {
     $home_login = 'pag-inicial-res.php';
+    $meus_pedidos = 'restaurante-pedidos.php';
   }
 }
 
 // Altera a tela de pedidos para usuários e restaurantes
 if (Login::isLogged()) {
   if ($_SESSION['usuario']['acesso'] == 'u') {
-    $meus_pedidos = 'pedidos.php';
+
   } else {
-    $meus_pedidos = 'restaurante-pedidos.php';
+
   }
 }
 
@@ -33,7 +36,7 @@ $dados_a = '';
 
 // Verifica se há algum pedido não finalizado e exibe "Finalizar pedido"
 if (Login::isLogged()) {
-  if ($_SESSION['usuario']['pedido'] and $_SERVER['REQUEST_URI'] != '/Smartfood/finalizar-pedido.php') {
+  if ($_SESSION['usuario']['pedido'] and $_SERVER['REQUEST_URI'] != '/Smartfood/finalizar-pedido.php' and $_SERVER['REQUEST_URI'] != '/Smartfood/comprar.php') {
     $finalizar_pedido = ' <a href="finalizar-pedido.php" class="texto-pedido-aberto">
     <div class="pedido-aberto">
       <p style="margin-bottom: 0 !important;">Finalizar pedido</p>
@@ -52,6 +55,7 @@ if ($page == 'home') {
 } else if ($page == 'dados') {
   $dados_a = 'active';
 }
+
  ?>
 
 <!DOCTYPE html>
@@ -62,11 +66,14 @@ if ($page == 'home') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- CSS Principal -->
-    <link rel="stylesheet" href="src/css/main_2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="/Smartfood/src/css/main_2.css">
     <title>Smart Food</title>
 </head>
 <body class="bg-light">
@@ -97,5 +104,7 @@ if ($page == 'home') {
       </div>
     </div>
   </nav>
+
+  <div id="novas-mensagens"></div>
 
   <?=$finalizar_pedido?>

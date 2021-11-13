@@ -24,9 +24,12 @@
         $situacao = 'Preparando';
         $cor = 'fundo-pedido-processando';
       } elseif ($pedido->id_situacao == 3) {
+        $situacao = 'Esperando retirada';
+        $cor = 'fundo-pedido-esperando';
+      } elseif ($pedido->id_situacao == 4) {
         $situacao = 'Finalizado';
         $cor = 'fundo-pedido-fechado';
-      } elseif ($pedido->id_situacao == 4) {
+      } elseif ($pedido->id_situacao == 5) {
         $situacao = 'Recusado';
         $cor = 'fundo-pedido-recusado';
       }

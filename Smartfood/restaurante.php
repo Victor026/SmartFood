@@ -21,10 +21,11 @@
 
   echo $alertaPedido;
 
-  echo '<img src="src/img/fotos_restaurantes/restaurante-'.$restaurante->id.'.jpg" alt="" class="img-topo-restaurante">
+  echo '
+  <img src="/Smartfood/src/img/fotos_restaurantes/restaurante-'.$restaurante->id.'.jpg" alt="" class="img-topo-restaurante">
   <div class="container">
     <br>
-    <h3>'.$restaurante->nome.'</h3>
+    <h2 class="mt-5" style="font-weight:900">'.$restaurante->nome.'</h2>
     <br>
     <p>'.$restaurante->rua.', '.$restaurante->numero.'</p>
     <p>'.$restaurante->cidade.' - '.$restaurante->estado.'</p>
@@ -40,15 +41,13 @@
       // Formata o preço do prato
       $preco = number_format($prato->preco, 2, ',', ' ');
 
-      echo '<div class="prato">
-      <img src="src/img/fotos_pratos/prato-'.$prato->id.'.jpg" alt="" class="img-prato">
+      echo '<div class="prato container">
+      <img src="/Smartfood/src/img/fotos_pratos/prato-'.$prato->id.'.jpg" alt="" class="img-prato" style="max-width: 20em;">
       <br><br>
       <h4>'.$prato->nome.'</h4>
       <br>
       <p>'.$prato->descricao.'</p>
       <div class="preco">Preço: '.$preco.'</div>
-      <br>
-      <div class="avaliacao">Avaliação: '.$prato->avaliacao.'</div>
       <br>
       <a href="adicionar-prato.php?prato='.$prato->id.'&restaurante='.$restaurante->id.'&pedido='.$pedido.'" class="btn btn-primary">Adicionar prato</a>
     </div>';

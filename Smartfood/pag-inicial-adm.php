@@ -17,7 +17,6 @@ if (isset($_GET['pagina_restaurantes'])) {
   $pagina_restaurantes = 1;
 }
 
-
 // Quantidade de restaurantes retornados
 // $quantidaderestaurantes   = Restaurante::consultar_quantidade($where_restaurantes);
 // $paginacao_restaurantes   = new Pagination($quantidaderestaurantes, $pagina_restaurantes, 7);
@@ -35,16 +34,25 @@ $saida_restaurantes = '';
 
 foreach ($restaurantes as $restaurante) {
   $resp = '';
+  $nota = '';
+
+  if ($restaurante->pedidos_nota > 2) {
+    $nota = '<p>Nota: '.round($restaurante->nota / $restaurante->pedidos_nota, 1).' ( '.$restaurante->pedidos_nota.' )</p>';
+  } else {
+    $nota = '<h5><span class="badge badge-secondary">Novo</span></h5>';
+  }
 
 // Saída da lista de restaurantes
 /** NOVO LAYOUT **/
   $saida_restaurantes .= '
   <div class="restaurante">
-  <img src="src/img/fotos_restaurantes/restaurante-'.$restaurante->id.'.jpg" alt="" class="img-restaurante">
-  <h3 class="h3-restaurante">'.$restaurante->nome.'</h3>
-  <p>'.$restaurante->descricao.'</p>
-  <a class="btn btn-primary" href="restaurante.php?restaurante='.$restaurante->id.'">Visualizar</a>
-</div>';
+    <img src="src/img/fotos_restaurantes/restaurante-'.$restaurante->id.'.jpg" alt="" class="img-restaurante">
+    <h3 class="h3-restaurante">'.$restaurante->nome.'</h3>
+    <p>'.$restaurante->descricao.'</p>
+    <p>Horário de funcionamento: 10:00 - 18:00</p>
+    '.$nota.'
+    <a class="btn btn-primary" href="restaurante.php?restaurante='.$restaurante->id.'">Visualizar</a>
+  </div>';
 
 }
 // Caso não retorne nenhum restaurante
@@ -77,9 +85,9 @@ $url_paginacao = '';
  -->
   </div>
   <div class="container">
-    <div class="row mt-4">
+    <div class="row mt-5">
       <div class="col-md-12">
-        <h5 class="mb-2">Restaurantes:</h5>
+        <h2 class="mb-4" style="font-weight: 900;">Restaurantes:</h2>
         <?=$saida_restaurantes?>
       </div>
     </div>

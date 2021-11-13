@@ -39,9 +39,11 @@
   }
 
   if ($pedido->id_situacao == 1) {
-    $mudar_situacao = '<a href="preparar-pedido.php?pedido='.$pedido->id.'" class="btn btn-success">Preparar pedido</a>';
+    $mudar_situacao = '<a href="preparar-pedido.php?pedido='.$pedido->id.'" class="btn btn-primary">Preparar pedido</a>';
     $finalizar_pedido = '<a href="recusar-pedido.php?pedido='.$pedido->id.'" class="btn btn-danger">Recusar pedido</a>';
   } elseif ($pedido->id_situacao == 2) {
+    $mudar_situacao = '<a href="restaurante-pedido-pronto.php?pedido='.$pedido->id.'" class="btn btn-danger">Pedido pronto</a>';
+  } elseif ($pedido->id_situacao == 3) {
     $mudar_situacao = '<a href="restaurante-finalizar-pedido.php?pedido='.$pedido->id.'" class="btn btn-danger">Finalizar pedido</a>';
   }
 
@@ -51,8 +53,10 @@
   } elseif ($pedido->id_situacao == 2) {
     $situacao = 'Preparando';
   } elseif ($pedido->id_situacao == 3) {
+    $situacao = 'Esperando retirada';
+  } elseif ($pedido->id_situacao == 4) {
     $situacao = 'Finalizado';
-  }  elseif ($pedido->id_situacao == 4) {
+  } elseif ($pedido->id_situacao == 5) {
     $situacao = 'Recusado';
   }
 ?>
@@ -70,7 +74,10 @@
     </div>
     <?=$saida_pratos?>
 
-    <?=$mudar_situacao?>
+    <?=$mudar_situacao?> <br><br>
+    <a href="chat.php?id_destino=<?=$usuario->id?>&pedido=<?=$pedido->id?>" class="btn btn-success">Entrar em contato com o cliente</a>
+    <!-- <a href="chat.php?id_destino='.$usuario->id.'&pedido='.$pedido->id.'" class="btn btn-success">Entrar em contato com o restaurante</a> -->
+    <br><br>
     <?=$finalizar_pedido?>
 
   </div>

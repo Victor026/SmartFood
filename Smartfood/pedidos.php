@@ -11,10 +11,10 @@
 
   // Caso não ache nenhum pedido
   if (!$pedidos) {
-    echo 'Não existem pedidos abertos';
+    echo '<div class="container mt-4 text-center">Não existem pedidos abertos</div>';
     exit;
   } else {
-          echo "<div class='container mt-2'>";
+    echo '<div class="container">';
     foreach ($pedidos as $pedido) {
 
       // Pega o restaurante responsável pelo pedido
@@ -28,14 +28,17 @@
         $situacao = 'Preparando';
         $cor = 'fundo-pedido-processando';
       } elseif ($pedido->id_situacao == 3) {
+        $situacao = 'Esperando retirada';
+        $cor = 'fundo-pedido-esperando';
+      } elseif ($pedido->id_situacao == 4) {
         $situacao = 'Finalizado';
         $cor = 'fundo-pedido-fechado';
-      } elseif ($pedido->id_situacao == 4) {
+      } elseif ($pedido->id_situacao == 5) {
         $situacao = 'Recusado';
         $cor = 'fundo-pedido-recusado';
       }
 
-      echo '<div class="box-pedidos '.$cor.'">
+      echo '<div class="box-pedidos '.$cor.'" style="margin-left: 0.5em; margin-rigth: 0.5em">
               <p><b>ID do pedido:</b> '.$pedido->id.'</p>
               <p><b>Restaurante:</b> '.$restaurante->nome.'</p>
               <p><b>Situação do pedido:</b> '.$situacao.'</p>
@@ -48,9 +51,9 @@
             $dar_nota = '';
             $cancelar_pedido = '';
     }
-      echo '<br><br>';
+      echo '<br>';
       echo "<a href='pag-inicial-adm.php' class='btn btn-primary'>Voltar a página inicial</a>";
-      echo "</div>";
+      echo '</div>';
       echo '<br><br>';
   }
 ?>
