@@ -3,11 +3,11 @@
 include 'topo.php';
 include 'entidades/Restaurante.php';
 
-$restaurante = Restaurante::consultar_restaurante($_POST['email']);
-if( $restaurante instanceof Restaurante ) {
-    $alertaCadastro = '<div class="alert alert-danger mt-2"> Email já existente! Por favor selecione outro </div>';
+$restaurante = Usuario::consultar_usuario($_POST['email']);
+if( $restaurante instanceof usuario ) {
+    header('location:cadastrar-restaurante.php?erro=true');
     exit;
-}
+} else {
 
 // Cadastro na tabela usuário
 $novo_usuario = new Usuario;
@@ -80,4 +80,5 @@ if ($uploadOk == 0) {
 
 header("location:index.php?redirect=2");
 exit;
+}
 ?>

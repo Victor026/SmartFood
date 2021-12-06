@@ -49,7 +49,6 @@ foreach ($restaurantes as $restaurante) {
     <img src="src/img/fotos_restaurantes/restaurante-'.$restaurante->id.'.jpg" alt="" class="img-restaurante">
     <h3 class="h3-restaurante">'.$restaurante->nome.'</h3>
     <p>'.$restaurante->descricao.'</p>
-    <p>Horário de funcionamento: 10:00 - 18:00</p>
     '.$nota.'
     <a class="btn btn-primary" href="restaurante.php?restaurante='.$restaurante->id.'">Visualizar</a>
   </div>';

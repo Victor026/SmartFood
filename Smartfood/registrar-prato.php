@@ -1,5 +1,10 @@
-<?php include 'topo.php'; ?>
+<?php include 'topo.php'; 
 
+$erro = '';
+if(isset($_GET['erro'])) {
+	$erro = '<div class="alert alert-danger">O preço do prato deve ser positivo</div>';
+}
+?>
 <div class="container mt-3">
   <form method="post" action="acao-registrar-prato.php" enctype="multipart/form-data">
    	<h4>Cadastro do prato</h4>
@@ -17,6 +22,7 @@
    	 	<label for="preco">Preço</label>
    	 	<input type="text" class="form-control" name="preco" placeholder="Insira o preço do prato...">
    	</div>
+	<?=$erro?>
    	<div class="form-group mt-3">
    	 	<button type="submit" class="btn btn-success">Cadastar</button>
    	 	<a href="pag-inicial-res.php" class="btn btn-danger">Cancelar</a>

@@ -3,14 +3,12 @@
     include 'entidades/Usuario.php';
     $alertaCadastro = '';
 
-    if( $_POST ) {
+    if($_POST) {
 
         $usuario = Usuario::consultar_usuario($_POST['email']);
         if( $usuario instanceof Usuario ) {
-            $alertaCadastro = '<div class="alert alert-danger mt-2"> Email já existente! Por favor selecione outro </div>';
-            exit;
-        }
-
+          $alertaCadastro = '<div class="alert alert-danger mt-2"> Email já existente! Por favor selecione outro </div>';
+        } else {
         $novo_usuario = new Usuario;
         $novo_usuario->nome = $_POST['nome'];
         $novo_usuario->telefone = $_POST['telefone'];
@@ -20,6 +18,7 @@
         $novo_usuario->cadastrar();
         header("location:index.php?redirect=1");
         exit;
+        }
     }
 ?>
 

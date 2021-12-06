@@ -3,41 +3,42 @@
     include 'entidades/Restaurante.php';
     $alertaCadastro = '';
 
-
-
-    if( $_POST ) {
-
-        $restaurante = Restaurante::consultar_restaurante($_POST['email']);
-        if( $restaurante instanceof Restaurante ) {
-            $alertaCadastro = '<div class="alert alert-danger mt-2"> Email já existente! Por favor selecione outro </div>';
-            exit;
-        }
-
-        // Cadastro na tabela restaurante
-        $novo_restaurante = new Restaurante;
-        $novo_restaurante->nome = $_POST['nome'];
-        $novo_restaurante->cnpj = $_POST['cnpj'];
-        $novo_restaurante->estado = $_POST['estado'];
-        $novo_restaurante->cidade = $_POST['cidade'];
-        $novo_restaurante->rua = $_POST['rua'];
-        $novo_restaurante->numero = $_POST['numero'];
-        $novo_restaurante->telefone = $_POST['telefone'];
-        $novo_restaurante->email = $_POST['email'];
-        $novo_restaurante->descricao = $_POST['descricao'];
-        $novo_restaurante->cadastrar();
-        header("location:index.php?redirect=2");
-        exit;
-
-        // Cadastro na tabela usuário
-        $novo_usuario = new Usuario;
-        $novo_usuario->nome = $_POST['nome'];
-        $novo_usuario->telefone = $_POST['telefone'];
-        $novo_usuario->email = $_POST['email'];
-        $novo_usuario->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-        $novo_usuario->acesso = 'r';
-        $novo_usuario->cadastrar();
-
+    if (isset($_GET['erro'])) {
+      $alertaCadastro = '<div class="alert alert-danger mt-2"> Email já existente! Por favor selecione outro </div>';
     }
+
+    // if( $_POST ) {
+    //
+    //     $restaurante = Restaurante::consultar_restaurante($_POST['email']);
+    //     if( $restaurante instanceof Restaurante ) {
+    //         $alertaCadastro = '<div class="alert alert-danger mt-2"> Email já existente! Por favor selecione outro </div>';
+    //     } else {
+    //
+    //     // Cadastro na tabela restaurante
+    //     $novo_restaurante = new Restaurante;
+    //     $novo_restaurante->nome = $_POST['nome'];
+    //     $novo_restaurante->cnpj = $_POST['cnpj'];
+    //     $novo_restaurante->estado = $_POST['estado'];
+    //     $novo_restaurante->cidade = $_POST['cidade'];
+    //     $novo_restaurante->rua = $_POST['rua'];
+    //     $novo_restaurante->numero = $_POST['numero'];
+    //     $novo_restaurante->telefone = $_POST['telefone'];
+    //     $novo_restaurante->email = $_POST['email'];
+    //     $novo_restaurante->descricao = $_POST['descricao'];
+    //     $novo_restaurante->cadastrar();
+    //
+    //     // Cadastro na tabela usuário
+    //     $novo_usuario = new Usuario;
+    //     $novo_usuario->nome = $_POST['nome'];
+    //     $novo_usuario->telefone = $_POST['telefone'];
+    //     $novo_usuario->email = $_POST['email'];
+    //     $novo_usuario->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+    //     $novo_usuario->acesso = 'r';
+    //     $novo_usuario->cadastrar();
+    //     header("location:index.php?redirect=2");
+    //     exit;
+    //     }
+    // }
 ?>
 
 <section class = "sec-formulario">

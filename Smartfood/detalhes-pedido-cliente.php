@@ -38,7 +38,6 @@
     $situacao = 'Esperando retirada';
   } elseif ($pedido->id_situacao == 4) {
     $situacao = 'Finalizado';
-    $situacao = 'Recusado';
   }
 
   // Pega o usuário que fez o pedido

@@ -2,6 +2,11 @@
 
 include 'topo.php';
 include 'entidades/prato.php';
+print_r($_POST);
+if($_POST['preco'] <= 0) {
+	header('location: registrar-prato.php?'.$_POST['restaurante'].'&erro=true');
+	exit;
+}
 
 $novo_prato = new Prato;
 $novo_prato->id_restaurante = $_POST['restaurante'];
