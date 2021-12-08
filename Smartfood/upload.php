@@ -3,33 +3,6 @@
 include 'topo.php';
 include 'entidades/Restaurante.php';
 
-$restaurante = Usuario::consultar_usuario($_POST['email']);
-if( $restaurante instanceof usuario ) {
-    header('location:cadastrar-restaurante.php?erro=true');
-    exit;
-} else {
-
-// Cadastro na tabela usuário
-$novo_usuario = new Usuario;
-$novo_usuario->nome = $_POST['nome'];
-$novo_usuario->telefone = $_POST['telefone'];
-$novo_usuario->email = $_POST['email'];
-$novo_usuario->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-$novo_usuario->acesso = 'r';
-$novo_usuario->cadastrar();
-
-$novo_restaurante = new Restaurante;
-$novo_restaurante->nome = $_POST['nome'];
-$novo_restaurante->telefone = $_POST['telefone'];
-$novo_restaurante->cnpj = $_POST['cnpj'];
-$novo_restaurante->estado = $_POST['estado'];
-$novo_restaurante->cidade = $_POST['cidade'];
-$novo_restaurante->rua = $_POST['rua'];
-$novo_restaurante->numero = $_POST['numero'];
-$novo_restaurante->email = $_POST['email'];
-$novo_restaurante->descricao = $_POST['descricao'];
-$novo_restaurante->cadastrar();
-
 $target_dir = "src/img/fotos_restaurantes/";
 $target_file = $target_dir . 'restaurante-'.$novo_restaurante->id.'.jpg';
 $uploadOk = 1;
@@ -80,5 +53,4 @@ if ($uploadOk == 0) {
 
 header("location:index.php?redirect=2");
 exit;
-}
 ?>
