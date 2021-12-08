@@ -28,6 +28,12 @@ class Usuario {
       * @var string
       */
       public $senha;
+	  
+	  /**
+      * Cpf do usuário
+      * @var integer
+      */
+      public $cpf;
 
      /**
      * Telefone do usuário
@@ -51,6 +57,7 @@ class Usuario {
                                  'nome' => $this->nome,
                                  'email' => $this->email,
                                  'senha' => $this->senha,
+								 'cpf' => $this->cpf,
                                  'telefone' => $this->telefone,
                                  'acesso' => $this->acesso,
                                ]);
